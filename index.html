@@ -3,14 +3,48 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            * {margin:40px auto; max-width:650px; line-height:1.6; font-size:18px; color:#444; padding: 0 10px;}
-            h1,h2,h3 { line-height:1.2 }
-        </style>
+        <link rel="stylesheet" href="styles.css">
         <title>NeGate's Hut</title>
+        <script>
+        addEventListener('scroll', (event) => {
+            var h = document.documentElement, 
+                b = document.body,
+                st = 'scrollTop',
+                sh = 'scrollHeight';
+                
+            var percent = Math.floor((h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100);
+            if (percent > 99.9) {
+                document.getElementById('scrollnum').innerHTML = "Bot";
+            } else if (percent < 0.9) {
+                document.getElementById('scrollnum').innerHTML = "Top";
+            } else {
+                document.getElementById('scrollnum').innerHTML = percent + "%";
+            }
+        });
+        </script>
     </head>
     <body>
-        <h1>Dis my blog, I'm Yasser (NeGate)</h1>
-        <p>uhh put a list here</p>
+        <div class="content">
+            <h1>Based man in a basement</h1>
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt erat lectus, eu venenatis felis hendrerit et. Proin semper dictum feugiat. Duis orci justo, faucibus in iaculis nec, posuere sed lorem. Aliquam ut magna lacus. Sed ac fringilla enim. Cras bibendum tincidunt elit, ut iaculis libero accumsan sit amet. Sed vel consectetur lorem, posuere tempor justo. Suspendisse ac mauris libero.
+            <br><br>
+            Ut vel viverra sapien. Morbi quis consectetur quam, eget lobortis nulla. Ut quam sapien, volutpat sed massa vitae, ornare hendrerit nulla. Quisque eu vulputate felis. Proin volutpat condimentum sapien ac scelerisque. Fusce vehicula, dolor sed varius aliquam, ante odio consequat ex, sit amet vehicula velit orci non nunc. Fusce scelerisque magna a neque placerat, nec vulputate sapien maximus. Vestibulum elementum tellus non mollis pretium. Sed eget arcu libero. Proin eget lectus quis tortor dictum lobortis eget in justo. Donec in dignissim nibh. In ac odio ipsum. Aliquam mattis, mi eget rhoncus tempor, ex sapien gravida ligula, non condimentum nulla turpis ut erat. Maecenas fringilla purus nec libero sagittis congue.
+            <br><br>
+            Vivamus vestibulum turpis volutpat quam luctus, sed tempus odio mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean fringilla aliquet placerat. In ultricies tincidunt odio, id commodo odio tincidunt auctor. Duis libero ligula, porta et nibh eget, tincidunt auctor tellus. In malesuada nibh a urna tempus tempus. Sed convallis lectus nec libero pharetra, quis semper ex faucibus. Sed venenatis ipsum orci, eu vestibulum magna feugiat in. Nulla placerat sollicitudin pretium. Vestibulum ut dignissim tortor. Maecenas eget urna ultricies, semper orci a, egestas ante. Suspendisse accumsan mi ac neque facilisis cursus. Nulla eget dolor ex. Donec molestie consectetur massa sit amet hendrerit. Proin hendrerit et magna ac interdum.
+            <br><br>
+            Ut diam enim, congue ac feugiat sed, consectetur at neque. Nulla cursus finibus enim malesuada interdum. Mauris ut purus arcu. Vivamus gravida nulla a luctus facilisis. Donec iaculis enim vitae libero lobortis, ut varius lorem porttitor. Nam ut elit et mauris vestibulum fringilla sed at enim. Nulla facilisi.
+            <br><br>
+            Nullam non libero tempus, mattis enim a, luctus est. Integer mollis elit quis elit congue, quis sagittis ante eleifend. Sed interdum magna eu leo suscipit, nec congue libero venenatis. Phasellus in gravida velit. Donec porta massa condimentum tincidunt fringilla. Curabitur tristique nibh eu turpis imperdiet lobortis. Morbi lacinia dui rutrum tempor fermentum. Donec at faucibus est. Pellentesque sollicitudin quis est in mattis. Etiam et accumsan odio.
+            </p>
+        </div>
+        
+        <div id="vimbar" class="row">
+            <div class="row2">
+                <div id="pagename" class="column left">SomethingCool</div>
+                <div class="column middle">lf</div>
+                <div id="scrollnum" class="column right">0%</div>
+            </div>
+        </div>
     </body>
 </html>

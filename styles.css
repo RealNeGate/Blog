@@ -1,0 +1,71 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css");
+
+* {
+    background-color: #282828;
+    color:#D4BE98;
+    padding: 0 10px;
+    line-height:1.6;
+    font-size:1em;
+}
+
+.content {
+    text-align: left;
+    margin:40px auto;
+    max-width:650px;
+}
+
+h1 { font-size: 2em; line-height:2.0; }
+h2 { font-size: 1.6em; line-height:1.2; }
+h3 { font-size: 1.2em; line-height:1.2; }
+
+.column {
+    float: left;
+    height: 100%;
+    font-size: 1em;
+    line-height: 1.0;
+    background-color: #3C3836;
+    color: #A89985;
+}
+
+.left {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-right: 1em;
+}
+
+.middle {
+}
+
+.right {
+    float: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row2 {
+    left: 0%;
+    height: 1em;
+    padding: 0px;
+    background-color: #3C3836;
+}
+
+#pagename {
+    background-color: #A89985;
+    color: #282828;
+}
+
+#vimbar {
+    font-family: 'Cascadia Code', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    height: 2em;
+    position: fixed;
+    left: 0%;
+    bottom:0%;
+    width:100%;
+}
