@@ -1,0 +1,296 @@
+:root {
+	--link-color: #0083B7;
+	--nav-color: #222;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-size: 12pt;
+	line-height: 1.4;
+	color: #333;
+	font-family: 'Fira Sans', sans-serif;
+}
+
+footer {
+	margin-top: 2em;
+	padding-bottom: 4em;
+	background-color: var(--nav-color);
+}
+
+a {
+	font-weight: 500;
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: 500;
+	line-height: 1.1;
+	margin-top: 0;
+}
+
+h4 {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+ul {
+	margin-top: 0;
+}
+
+.image {
+    float: right;
+    text-align: center;
+}
+
+.snow-pictures {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.snow-pictures img {
+	margin: 0;
+	width: 50%;
+	height: 50%;
+}
+
+a {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.mugshot-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 15em;
+
+    text-align: center;
+}
+
+.mugshot-header > h2 {
+	font-size: 20pt;
+	margin-bottom: 0.5em;
+}
+
+.mugshot-header > h3 {
+	font-size: 16pt;
+	margin-bottom: 0.25em;
+}
+
+.mugshot-header > a {
+	color: var(--link-color);
+}
+
+section {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+section.about-section {
+	margin-bottom: 2em;
+}
+section:not(.about-section) {
+	padding-bottom: 2em;
+}
+
+.about-section {
+    padding-top: 1em;
+    text-align: center;
+    background: #eee;
+}
+
+
+.section-header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 0.25em;
+}
+
+.section-header > h1 {
+	font-size: 24pt;
+	margin: 0;
+}
+
+.section-header > img {
+	display: inline-block;
+	margin-right: 0.25em;
+	max-height: 24pt;
+}
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 50em;
+}
+
+.container > .sub-link {
+	color: #606060;
+}
+
+.container > .sub-header {
+	display: flex;
+	flex-direction: column;
+
+	border: solid 2px #8ff0dc;
+	border-radius: 0.25em;
+	background-color: #bcf6ea;
+	padding: 1em;
+	margin-bottom: 1em;
+}
+
+.container > .sub-header > h4 {
+	margin-top: 0;
+}
+
+.header-box {
+	display: flex;
+	flex-direction: column;
+}
+
+.mugshot-box {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap-reverse;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 1em;
+	gap: 1em;
+}
+
+.mugshot-box > img {
+	border-radius: 4px;
+	border: 6px solid #ddd;
+	height: 16em;
+}
+
+.skills-summary {
+	border-top: solid 1px #999;
+	border-bottom: solid 1px #999;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-bottom: 1em;
+}
+
+.skills-summary > .header {
+	text-align: left;
+	margin-top: 0em;
+}
+
+.skills-summary > .skills-list {
+	text-align: left;
+	clear: both;
+	margin-bottom: 0;
+	padding-left: 1.5em;
+}
+
+.octocat-link {
+	height: 1em;
+}
+
+.link-block {
+	padding-bottom: 1em;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.link-block > .title {
+	padding-top: 0em;
+	margin-top: 0em;
+}
+
+.link-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	row-gap: 10px;
+	column-gap: 10px;
+}
+
+.link-row > a {
+	display: flex;
+	flex-direction: column;
+	color: var(--link-color);
+}
+
+.link-row > a > img {
+	height: 5em;
+	width: auto;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background: var(--nav-color);
+	height: 3em;
+}
+
+.navbar-header {
+	width: 100%;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 60em;
+}
+
+.navbar-logo {
+	font-size: 18px;
+	color: #9d9d9d;
+}
+
+.pixel-img {
+	image-rendering: pixelated;
+}
+
+.hire-card {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+
+	background-color: #18bc9c;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 33em;
+	padding: 1.5em;
+
+	border-radius: 6px;
+}
+
+.text-column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	max-width: 20em;
+}
+
+.hire-card > img {
+	border-radius: 4px;
+	border: 6px solid #ddd;
+	height: 12em;
+}
+
+.text-column > h1 {
+	color: white;
+	margin-bottom: 0;
+	font-size: 22pt;
+}
+.text-column > p {
+	color: white;
+	margin-bottom: 0.25em;
+}
+.text-column > a {
+	color: white;
+	margin-bottom: 0;
+}

@@ -1,50 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css">
-        <title>NeGate's Hut</title>
-        <script>
-        addEventListener('scroll', (event) => {
-            var h = document.documentElement, 
-                b = document.body,
-                st = 'scrollTop',
-                sh = 'scrollHeight';
-                
-            var percent = Math.floor((h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100);
-            if (percent > 99.9) {
-                document.getElementById('scrollnum').innerHTML = "Bot";
-            } else if (percent < 0.9) {
-                document.getElementById('scrollnum').innerHTML = "Top";
-            } else {
-                document.getElementById('scrollnum').innerHTML = percent + "%";
-            }
-        });
-        </script>
-    </head>
-    <body>
-        <div class="content">
-            <h1>Based man in a basement</h1>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tincidunt erat lectus, eu venenatis felis hendrerit et. Proin semper dictum feugiat. Duis orci justo, faucibus in iaculis nec, posuere sed lorem. Aliquam ut magna lacus. Sed ac fringilla enim. Cras bibendum tincidunt elit, ut iaculis libero accumsan sit amet. Sed vel consectetur lorem, posuere tempor justo. Suspendisse ac mauris libero.
-            <br><br>
-            Ut vel viverra sapien. Morbi quis consectetur quam, eget lobortis nulla. Ut quam sapien, volutpat sed massa vitae, ornare hendrerit nulla. Quisque eu vulputate felis. Proin volutpat condimentum sapien ac scelerisque. Fusce vehicula, dolor sed varius aliquam, ante odio consequat ex, sit amet vehicula velit orci non nunc. Fusce scelerisque magna a neque placerat, nec vulputate sapien maximus. Vestibulum elementum tellus non mollis pretium. Sed eget arcu libero. Proin eget lectus quis tortor dictum lobortis eget in justo. Donec in dignissim nibh. In ac odio ipsum. Aliquam mattis, mi eget rhoncus tempor, ex sapien gravida ligula, non condimentum nulla turpis ut erat. Maecenas fringilla purus nec libero sagittis congue.
-            <br><br>
-            Vivamus vestibulum turpis volutpat quam luctus, sed tempus odio mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean fringilla aliquet placerat. In ultricies tincidunt odio, id commodo odio tincidunt auctor. Duis libero ligula, porta et nibh eget, tincidunt auctor tellus. In malesuada nibh a urna tempus tempus. Sed convallis lectus nec libero pharetra, quis semper ex faucibus. Sed venenatis ipsum orci, eu vestibulum magna feugiat in. Nulla placerat sollicitudin pretium. Vestibulum ut dignissim tortor. Maecenas eget urna ultricies, semper orci a, egestas ante. Suspendisse accumsan mi ac neque facilisis cursus. Nulla eget dolor ex. Donec molestie consectetur massa sit amet hendrerit. Proin hendrerit et magna ac interdum.
-            <br><br>
-            Ut diam enim, congue ac feugiat sed, consectetur at neque. Nulla cursus finibus enim malesuada interdum. Mauris ut purus arcu. Vivamus gravida nulla a luctus facilisis. Donec iaculis enim vitae libero lobortis, ut varius lorem porttitor. Nam ut elit et mauris vestibulum fringilla sed at enim. Nulla facilisi.
-            <br><br>
-            Nullam non libero tempus, mattis enim a, luctus est. Integer mollis elit quis elit congue, quis sagittis ante eleifend. Sed interdum magna eu leo suscipit, nec congue libero venenatis. Phasellus in gravida velit. Donec porta massa condimentum tincidunt fringilla. Curabitur tristique nibh eu turpis imperdiet lobortis. Morbi lacinia dui rutrum tempor fermentum. Donec at faucibus est. Pellentesque sollicitudin quis est in mattis. Etiam et accumsan odio.
-            </p>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Portfolio - Yasser Arguelles</title>
+
+    <!-- Custom styles for this template -->
+    <link href="style.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+
+	<script>
+		function fill_email() {
+			var addr = "eWFzc2VyYXJndWVsbGVzQGdtYWlsLmNvbQ==";
+
+			let slots = ["emaila", "emaila2"];
+			for (let i = 0; i < slots.length; i++) {
+				document.getElementById(slots[i]).innerHTML = atob(addr);
+				document.getElementById(slots[i]).href = "mailto:" + atob(addr);
+			}
+		}
+	</script>
+
+  </head>
+
+ <body id="page-top" onload="fill_email()">
+    <nav class="navbar">
+		<div class="navbar-header">
+		  <a class="navbar-logo" href="#"></a>
+		</div>
+    </nav>
+
+    <section id="about" class="about-section">
+        <div class="container header-box">
+			<div class="mugshot-box">
+				<div class="mugshot-header">
+					<h2>Yasser Arguelles</h2>
+					<h3>Compiler Engineer<br>Graphics Programmer</h3>
+					<a id="emaila"></a>
+					<a class="img-row" href="https://github.com/RealNeGate">
+						<img src="octocat.png" alt="github-link" class="octocat-link">
+						&nbsp;Github Portfolio
+					</a>
+					<a href="resume.pdf">Resume</a>
+				</div>
+				<img src="mug2.png"></img>
+			</div>
+			<div class="skills-summary">
+				<h4 class="header">Skill Summary</h4>
+				<ul class="skills-list">
+					<li>production code in C, skilled in C++, Assembly, and Java</li>
+					<li>Compiler toolchains (debug information, optimization, linkers)</li>
+				</ul>
+			</div>
         </div>
-        
-        <div id="vimbar" class="row">
-            <div class="row2">
-                <div id="pagename" class="column left">SomethingCool</div>
-                <div class="column middle">lf</div>
-                <div id="scrollnum" class="column right">0%</div>
-            </div>
+
+		<div class="link-block">
+			<h2 class="title">Spotlight Projects</h2>
+			<div class="link-row">
+				<a href="#cuik">
+					<img class="pixel-img" src="cuik.svg" alt="cuik">Cuik
+				</a>
+				<a href="#tb">
+					<img class="pixel-img" src="cuik.svg" alt="debug">TB
+				</a>
+				<a href="#cork">
+					<img class="pixel-img" src="cuik.svg" alt="cork">Cork
+				</a>
+				<a href="#delta">
+					<img src="cuik.svg" alt="Delta">Delta
+				</a>
+			</div>
+		</div>
+    </section>
+
+    <section id="cuik">
+    <div class="container">
+        <div class="section-header">
+			<img class="pixel-img" src="cuik.svg" alt="cuik">
+            <h1>Cuik</h1>
         </div>
-    </body>
+
+        <div class="sub-header">
+			<h4>Cuik (Fast, Tiny, C compiler frontend)</h4>
+			<ul>
+				<li> 2x the preprocessor speed </li>
+				<li> less than 25k sloc </li>
+				<li> flexible compiler-as-library design </li>
+				<li> uses my custom language-agnostic backend, TB </li>
+				<li> aiming for spec compliance </li>
+			</ul>
+
+			<a href="https://github.com/RealNeGate/Cuik/tree/monorepo" class="sub-link">Cuik repo</a>
+			<a href="https://github.com/RealNeGate/c-testsuite" class="sub-link">Testsuite</a>
+		</div>
+
+		<p>Cuik is a modern C compiler, the idea is to be significantly smaller without compromising
+		on flexibility, errors or compile speed. Unlike standard commpilers it can compile multiple
+		files in parallel within the same process along with link by itself (on windows for now).
+		We've got an 90% competition on self hosting along with a few small demos.</p>
+		<img src="cuik_gl.gif" class="thumbnail" alt="Cuik compiling a GL demo" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+		<p>I've got parsing for GLSL</p>
+		<img src="cuik_glsl.png" class="thumbnail" alt="Cuik parsing GLSL" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+		<p>alongside usage of Cuik as a library with Lua</p>
+		<img src="cuik_lua.png" class="thumbnail" alt="Cuik being compiled via Lua" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+    </div>
+    </section>
+
+	<section>
+		<div class="hire-card">
+			<div class="text-column">
+				<h1>Hire Me!</h1>
+				<p>If you think my projects are interesting, I may be a good fit for your company.</p>
+				<a id="emaila2"></a>
+			</div>
+			<img src="mug2.png"></img>
+		</div>
+	</section>
+
+	</body>
+	<footer></footer>
 </html>
