@@ -274,14 +274,13 @@ section:not(.about-section) {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	flex-wrap: wrap;
 	justify-content: space-between;
-
 	background-color: #18bc9c;
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 33em;
-	padding: 1.5em;
-
+	padding: 1em;
 	border-radius: 6px;
 }
 
@@ -289,15 +288,19 @@ section:not(.about-section) {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-left: auto;
 	justify-content: center;
-
 	max-width: 20em;
+	margin-right: auto;
 }
 
 .hire-card > img {
 	border-radius: 4px;
 	border: 6px solid #ddd;
 	height: 12em;
+	margin-left: auto;
+	margin-bottom: 1em;
+	margin-right: auto;
 }
 
 .text-column > h1 {
@@ -308,6 +311,10 @@ section:not(.about-section) {
 .text-column > p {
 	color: white;
 	margin-bottom: 0.25em;
+	margin-left:  auto;
+	margin-right:  auto;
+	flex-direction: row;
+	align-items: center;
 }
 .text-column > a {
 	color: white;
