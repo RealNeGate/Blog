@@ -66,13 +66,13 @@
 					<img class="pixel-img" src="cuik.svg" alt="cuik">Cuik
 				</a>
 				<a href="#tb">
-					<img class="pixel-img" src="cuik.svg" alt="debug">TB
+					<img src="tb_icon.png" alt="debug">TB
 				</a>
 				<a href="#cork">
 					<img class="pixel-img" src="cuik.svg" alt="cork">Cork
 				</a>
-				<a href="#delta">
-					<img src="cuik.svg" alt="Delta">Delta
+				<a href="#game">
+					<img src="game_icon.png" alt="Game">Game
 				</a>
 			</div>
 		</div>
@@ -96,7 +96,7 @@
 			</ul>
 
 			<a href="https://github.com/RealNeGate/Cuik/tree/monorepo" class="sub-link">Cuik repo</a>
-			<a href="https://github.com/RealNeGate/c-testsuite" class="sub-link">Testsuite</a>
+			<a href="https://github.com/RealNeGate/c-testsuite" class="sub-link">Testsuite (145/220)</a>
 		</div>
 
 		<p>Cuik is a modern C compiler, the idea is to be significantly smaller without compromising
@@ -104,18 +104,44 @@
 		files in parallel within the same process along with link by itself (on windows for now).
 		We've got an 90% competition on self hosting along with a few small demos.</p>
 		<img src="cuik_gl.gif" class="thumbnail" alt="Cuik compiling a GL demo" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
-		<p>I've got parsing for GLSL</p>
-		<img src="cuik_glsl.png" class="thumbnail" alt="Cuik parsing GLSL" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
-		<p>alongside usage of Cuik as a library with Lua</p>
+		<p>Here's Cuik's compiler-as-library used from Lua</p>
 		<video class="game-video" autoplay="" loop="" muted="" playsinline="">
 			<source src="lua.mp4" type="video/mp4">
 		</video>
+		<p>and capable of parsing GLSL</p>
+		<img src="cuik_glsl.png" class="thumbnail" alt="Cuik parsing GLSL" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
     </div>
+    </section>
 
+    <section id="tb">
     <div class="container">
         <div class="section-header">
-			<img class="pixel-img" src="cuik.svg" alt="cuik">
-            <h1>Un</h1>
+			<img src="tb_icon.png" alt="TB">
+            <h1>TinyBackend</h1>
+        </div>
+
+        <div class="sub-header">
+			<h4>TB </h4>
+			<ul>
+				<li> Sea of nodes IR (like V8 and JVM Hotspot) </li>
+				<li> Language-agnostic library </li>
+				<li> pure C11 code </li>
+				<li> parallel by design </li>
+			</ul>
+		</div>
+
+		<p>Tinybackend (TB) is a custom backend made to combat issues with other popular
+		backend options (LLVM, libgccjit). We focus on being both simple and very capable,
+		the design allows for trivial parallel compilation and integrated linking.</p>
+		<img src="tb.png" class="thumbnail" alt="TB IR in graphviz" width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+    </div>
+    </section>
+
+    <section id="game">
+    <div class="container">
+        <div class="section-header">
+			<img src="game_icon.png" alt="game">
+            <h1>Unnamed game project</h1>
         </div>
 
         <div class="sub-header">
@@ -143,7 +169,6 @@
 		<img src="game3.png" class="thumbnail">
 		<img src="game4.png" class="thumbnail">
 	</div>
-
     </section>
 
 	<section>
