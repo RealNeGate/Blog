@@ -62,9 +62,11 @@ ul {
 }
 
 .game-video {
+	width: 100%;
+	height: auto;
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 50em;
 }
 
 a {
@@ -258,6 +260,14 @@ section:not(.about-section) {
 
 .pixel-img {
 	image-rendering: pixelated;
+}
+
+.thumbnail {
+	width: 100%;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .hire-card {
