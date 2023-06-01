@@ -88,7 +88,7 @@
 			</ul>
 
 			<a href="https://github.com/RealNeGate/Cuik/tree/monorepo" class="sub-link">Cuik repo</a>
-			<a href="https://github.com/RealNeGate/c-testsuite" class="sub-link">Testsuite (145/220)</a>
+			<a href="https://github.com/RealNeGate/c-testsuite/actions/runs/5094031578" class="sub-link">Testsuite (145/220)</a>
 		</div>
 
 		<p>Cuik is a modern C compiler, the idea is to be significantly smaller without compromising
@@ -96,7 +96,8 @@
 		files in parallel within the same process along with link by itself (on windows for now).
 		We've got an 90% competition on self hosting along with a few small demos.</p>
 		<img src="cuik_gl.gif" class="thumbnail" alt="Cuik compiling a GL demo">
-		<p>Here's Cuik's compiler-as-library used from Lua</p>
+		<br>
+		<a href="https://github.com/RealNeGate/le_game">Here's Cuik's compiler-as-library used from Lua</a>
 		<video class="game-video" autoplay="" loop="" muted="" playsinline="">
 			<source src="lua.mp4" type="video/mp4">
 		</video>
@@ -127,7 +128,17 @@
 		<p>Tinybackend (TB) is a custom backend made to combat issues with other popular
 		backend options (LLVM, libgccjit). We focus on being both simple and very capable,
 		the design allows for trivial parallel compilation and integrated linking.</p>
+		<p>TB uses sea-of-nodes which is an IR style similar to SSA (immutable values representing
+		data flow) but instead of representing control flow via a separate graph where instructions/values
+		are placed, certain nodes propagate control flow and it acts as any other form of data would. This
+		way we abstract away a lot of scheduling details from the IR and leave clearer room for the code
+		generator. A simple example is that sea of nodes doesn't require the IR to perform loop invariant code
+		motion (moving operations outside of a loop if they don't change per iteration) because values simply
+		"would not" exist in the loop. The point of type systems and IRs is to expose logical truths which
+		we can optimize around or share with users and this style is in my opinion most suited for TB.
 		<img src="tb.png" class="thumbnail" alt="TB IR in graphviz">
+		<p>The red edges represent control flow, nodes which imply ordering will depend on whatever must happen
+		before them in a more intuitive style than basic blocks where certain operations don't have a strict ordering.</p>
     </div>
     </section>
 
