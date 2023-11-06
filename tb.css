@@ -1,0 +1,89 @@
+@import url('https://fonts.cdnfonts.com/css/cascadia-code');
+
+* {
+    background-color: #282828;
+    color:#D4BE98;
+    padding: 0 10px;
+    line-height:1.6;
+    font-size:1em;
+}
+
+.content {
+    font-family:Open Sans,Arial;
+    text-align: left;
+    margin:40px auto;
+    max-width:650px;
+}
+
+h1 { font-size: 2em; line-height:2.0; }
+h2 { font-size: 1.6em; line-height:1.2; }
+h3 { font-size: 1.2em; line-height:1.2; }
+
+.mono {
+    font-family: 'Cascadia Code', sans-serif;
+    font-size: 0.8em;
+    border-radius: 0.5em;
+    background-color: #111;
+    margin: 0em auto;
+	padding: 1em;
+}
+
+.column {
+    float: left;
+    height: 100%;
+    font-size: 0.75em;
+    line-height: normal;
+    background-color: #3C3836;
+    color: #A89985;
+}
+
+.left {
+    /* border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px; */
+}
+
+.pointy {
+    width: 0;
+    height: 0;
+    border: 50px solid black;
+    border-color: transparent transparent transparent #D65D0E;
+    border-width: 0.5rem 0 0.5rem 1rem;
+    padding: 0;
+}
+
+.middle {
+}
+
+.right {
+    float: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row2 {
+    left: 0%;
+    height: 1em;
+    padding: 0px;
+    background-color: #3C3836;
+}
+
+#pagename {
+    background-color: #D65D0E;
+    color: #FFFFFF;
+}
+
+#vimbar {
+    font-family: 'Cascadia Code', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    height: 2em;
+    position: fixed;
+    left: 0%;
+    bottom:0%;
+    width:100%;
+}

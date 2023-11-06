@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.cdnfonts.com/css/cascadia-code" rel="stylesheet">
+        <link rel="stylesheet" href="tb.css">
+        <title>TB</title>
+        <script>
+function fill_email() {
+    var addr = "eWFzc2VyYXJndWVsbGVzQGdtYWlsLmNvbQ==";
+    let slots = ["emaila"];
+    for (let i = 0; i < slots.length; i++) {
+        document.getElementById(slots[i]).href = "mailto:" + atob(addr);
+    }
+}
+
+addEventListener('scroll', (event) => {
+    var h = document.documentElement,
+        b = document.body,
+        st = 'scrollTop',
+        sh = 'scrollHeight';
+
+    var percent = Math.floor((h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100);
+    if (percent >= 98) {
+        document.getElementById('scrollnum').innerHTML = "Bot";
+    } else if (percent < 2) {
+        document.getElementById('scrollnum').innerHTML = "Top";
+    } else {
+        document.getElementById('scrollnum').innerHTML = percent + "%";
+    }
+});
+        </script>
+    </head>
+    <body onload="fill_email()">
+
+<div class="content">
+<h1>Tilde, my LLVM alternative</h1>
+<p>
+I'm Yasser and I've made it my "holy" mission to produce an alternative to LLVM, the current
+king of compiler backend libraries. The reasons are pretty simple, i believe it's far too slow
+at compiling and far too big to be fixed from the inside, it's been 20 years and cruft has built
+up, time for a "redo".
+</p>
+
+<p>
+As a test case i wrote a C compiler and early tests show the preprocessor to be
+around 2x faster than Clang's along with being able to parse multiple translation units
+in the same process without threading issues and out of order declarations (can talk about that
+another time). To clarify, my project isn't some API compatible replacement to LLVM, it's just
+another backend that believes in a similar vision to early LLVM.
+</p>
+
+<p class="mono">
+The world needs better compiler tools, tools which are built as libraries. This
+design point allows reuse of the tools in new and novel ways. However, building
+the tools as libraries isn't enough: they must have clean APIs, be as decoupled
+from each other as possible, and be easy to modify/extend. This requires clean
+layering, decent design, and avoiding tying the libraries to a specific use. Oh
+yeah, did I mention that we want the resultant libraries to be as fast as
+possible? :)
+<br><br>
+- Chris Lattner, 2007
+</p>
+
+<h2>Key features</h2>
+<ul>
+<li>Sea of nodes IR (opposed to the LLVM or GCC's "SSA CFG")/li>
+<li>Simple type system</li>
+<li>Fast compile times</li>
+<li>Thread-safe modules (can generate and compile two functions at the same time)</li>
+<li>Codeview debug info (windows debuggers will handle it just fine)</li>
+<li>capable of both JITing and AOT (there's also early work on directly outputting linked executables thus bypassing the need for a conventional linker)</li>
+</ul>
+
+<h2>In progress</h2>
+<p>
+Currently I'm working with GingerBill on integrating with<a href="https://github.com/odin-lang/Odin">Odin</a>along
+with Shaw Summa on<a href="https://github.com/FastVM/minivm/tree/cuik2">minivm</a>, I'm hoping to self host Cuik this year which will be the most capable example of
+TB. Along with this, the optimizer is in progress and going good with most of the expected optimizations:
+SSA construction, SCCP, folding, GVN, DCE, and code motion, along with a decent linear scan allocator
+which will eventually be replaced with graph coloring for optimized builds.
+</p>
+
+<h2>Roadmap</h2>
+<ul>
+<li>Aarch64 support - </li>
+</ul>
+
+<h2>Let's talk</h2>
+<ul>
+<li><a id=emaila>Email</a></li>
+<li><a href="https://discord.gg/UFuHChZswc">Discord</a></li>
+<li><a href="https://github.com/RealNeGate/Cuik">Github repo</a></li>
+</ul>
+</div>
+
+        <div id="vimbar" class="row">
+            <div class="row2">
+                <div id="pagename" class="column left">tilde.md</div>
+                <div class="column pointy"></div>
+                <div class="column middle">lf</div>
+                <div id="scrollnum" class="column right">0%</div>
+            </div>
+        </div>
+    </body>
+</html>
