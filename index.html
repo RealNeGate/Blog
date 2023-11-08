@@ -1,203 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.cdnfonts.com/css/cascadia-code" rel="stylesheet">
+        <link rel="stylesheet" href="tb.css">
+        <title>TB</title>
+        <script>
+function fill_email() {
+    var addr = "eWFzc2VyYXJndWVsbGVzQGdtYWlsLmNvbQ==";
+    let slots = ["emaila"];
+    for (let i = 0; i < slots.length; i++) {
+        document.getElementById(slots[i]).href = "mailto:" + atob(addr);
+    }
+}
 
-    <title>Portfolio - Yasser Arguelles</title>
+addEventListener('scroll', (event) => {
+    var h = document.documentElement,
+        b = document.body,
+        st = 'scrollTop',
+        sh = 'scrollHeight';
 
-    <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+    var percent = Math.floor((h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100);
+    if (percent >= 98) {
+        document.getElementById('scrollnum').innerHTML = "Bot";
+    } else if (percent < 2) {
+        document.getElementById('scrollnum').innerHTML = "Top";
+    } else {
+        document.getElementById('scrollnum').innerHTML = percent + "%";
+    }
+});
+        </script>
+    </head>
+    <body onload="fill_email()">
 
-	<script>
-		function fill_email() {
-			var addr = "eWFzc2VyYXJndWVsbGVzQGdtYWlsLmNvbQ==";
+<div class="content">
+<h1>Tilde, my LLVM alternative</h1>
+<p>
+I'm Yasser and I've made it my mission to produce an alternative to LLVM, the current
+king of compiler backend libraries. I'm calling it Tilde (or TB for tilde backend) and the reasons
+are pretty simple, i believe it's far too slow at compiling and far too big to be fixed from the
+inside. It's been 20 years and cruft has built up, time for a "redo".
+</p>
 
-			let slots = ["emaila", "emaila2"];
-			for (let i = 0; i < slots.length; i++) {
-				document.getElementById(slots[i]).innerHTML = atob(addr);
-				document.getElementById(slots[i]).href = "mailto:" + atob(addr);
-			}
-		}
-	</script>
+<p>
+As a test case i wrote a C compiler and early tests show the preprocessor to be
+around 2x faster than Clang's along with being able to parse multiple translation units
+in the same process without threading issues and out of order declarations (can talk about that
+another time). To clarify, my project isn't some API compatible replacement to LLVM, it's just
+another backend that believes in a similar vision to early LLVM.
+</p>
 
-  </head>
+<p class="mono">
+The world needs better compiler tools, tools which are built as libraries. This
+design point allows reuse of the tools in new and novel ways. However, building
+the tools as libraries isn't enough: they must have clean APIs, be as decoupled
+from each other as possible, and be easy to modify/extend. This requires clean
+layering, decent design, and avoiding tying the libraries to a specific use. Oh
+yeah, did I mention that we want the resultant libraries to be as fast as
+possible? :)
+<br><br>
+- Chris Lattner, 2007
+</p>
 
- <body id="page-top" onload="fill_email()">
-    <section id="about" class="about-section">
-        <div class="container header-box">
-			<div class="mugshot-box">
-				<div class="mugshot-header">
-					<h2>Yasser Arguelles</h2>
-					<h3>Compiler Engineer<br>Graphics Programmer</h3>
-					<a id="emaila"></a>
-					<a class="img-row" href="https://github.com/RealNeGate">
-						<img src="octocat.png" alt="github-link" class="octocat-link">
-						&nbsp;Github
-					</a>
-					<a href="Resume.pdf">Resume</a>
-				</div>
-				<img src="mug2.png"></img>
-			</div>
-			<div class="skills-summary">
-				<h4 class="header">Skill Summary</h4>
-				<ul class="skills-list">
-					<li>production code in C, skilled in C++, Assembly, and Java</li>
-					<li>Compiler toolchains (debug information, optimization, linkers)</li>
-					<li>Skilled in OpenGL and Vulkan</li>
-				</ul>
-			</div>
+<h2>Key features</h2>
+<ul>
+<li>Sea of nodes IR (opposed to the LLVM or GCC's SSA CFG)</li>
+<li>Simple type system</li>
+<li>Fast compile times</li>
+<li>Thread-safe modules (can generate and compile two functions at the same time)</li>
+<li>Codeview debug info (windows debuggers will handle it just fine)</li>
+<li>Capable of both JITing and AOT (there's also early work on directly outputting linked executables thus bypassing the need for a conventional linker)</li>
+</ul>
+
+<h2>In progress</h2>
+<p>
+Currently I'm working with GingerBill on integrating with <a href="https://github.com/odin-lang/Odin">Odin</a> along
+with Shaw Summa on <a href="https://github.com/FastVM/minivm/tree/cuik2">minivm</a>, I'm hoping to self host Cuik this year which will be the most capable example of
+TB. Along with this, the optimizer is in progress and going good with most of the expected optimizations:
+SSA construction, SCCP, folding, GVN, DCE, and code motion, along with a decent linear scan allocator
+which will eventually be replaced with graph coloring for optimized builds.
+</p>
+
+<h2>Roadmap</h2>
+<p>
+The current plan is to have Cuik self-hosting on windows by March 2024, this would mark the first capable compiler under TB. From there the next few months will be spent on self-hosting with the optimizer on, this currently has no timeline but once self hosting is complete i'll have a clearer picture of that milestone.
+</p>
+
+<h2>Compile times?</h2>
+<p>
+I made a small demo you can try running on different files, just compile <a href="https://gist.github.com/RealNeGate/0c367a16d89d281b5c590072d1a1298a">this</a>. Cuik traces need to be opened with <a href="https://gravitymoth.com/spall/spall.html">spall</a>
+</p>
+<h3>cuik -g -O1 -c -T</h3>
+<img src="spall_tb_o1.png"/>
+<h3>clang -g -O0 -c -ftime-trace</h3>
+<img src="spall_clang_o0.png"/>
+<p>
+This is with my optimizer on just in case someone wanted to argue that my codegen being dumb in unoptimized builds (which it isn't, it's about the same) was the cause.
+Other important caveats are that LLVM doesn't consider IR generation to be backend here so that's included in my example and not theirs, it's only 0.3ms for me so i didn't
+mind giving them the upper hand. It's not a fair test on purpose to show what my slowest looks like compared to their fastest.
+</p>
+
+<h2>Let's talk</h2>
+<p>If you wanna discuss compilers, contribute or just chat about my projects, here's how you reach me:</p>
+<ul>
+<li><a id=emaila>Email</a></li>
+<li><a href="https://discord.gg/UFuHChZswc">Discord</a></li>
+<li><a href="https://github.com/RealNeGate/Cuik">Github repo</a></li>
+</ul>
+</div>
+
+        <div id="vimbar" class="row">
+            <div class="row2">
+                <div id="pagename" class="column left">tilde.md</div>
+                <div class="column pointy"></div>
+                <div class="column middle">lf</div>
+                <div id="scrollnum" class="column right">0%</div>
+            </div>
         </div>
-
-		<div class="link-block">
-			<h2 class="title">Spotlight Projects</h2>
-			<div class="link-row">
-				<a href="#cuik">
-					<img class="pixel-img" src="cuik.svg" alt="cuik">Cuik
-				</a>
-				<a href="#tb">
-					<img src="tb_icon.png" alt="debug">TB
-				</a>
-				<a href="#game">
-					<img src="game_icon.png" alt="Game">Game
-				</a>
-			</div>
-		</div>
-    </section>
-
-    <section id="cuik">
-    <div class="container">
-        <div class="section-header">
-			<img class="pixel-img" src="cuik.svg" alt="cuik">
-            <h1>Cuik</h1>
-        </div>
-
-        <div class="sub-header">
-			<h4>Cuik (Fast, Tiny, C compiler frontend)</h4>
-			<ul>
-				<li> 2x the preprocessor speed </li>
-				<li> less than 25k sloc </li>
-				<li> flexible compiler-as-library design </li>
-				<li> uses my custom language-agnostic backend, TB </li>
-				<li> aiming for spec compliance </li>
-			</ul>
-
-			<a href="https://github.com/RealNeGate/Cuik/tree/monorepo" class="sub-link">Cuik repo</a>
-			<a href="https://github.com/RealNeGate/c-testsuite/actions/runs/5094031578" class="sub-link">Testsuite (145/220)</a>
-		</div>
-
-		<p>Cuik is a modern C compiler, the idea is to be significantly smaller without compromising
-		on flexibility, errors or compile speed. Unlike standard commpilers it can compile multiple
-		files in parallel within the same process along with link by itself (on windows for now).
-		We've got an 90% competition on self hosting along with a few small demos.</p>
-		<img src="cuik_gl.gif" class="thumbnail" alt="Cuik compiling a GL demo">
-		<br>
-		<a href="https://github.com/RealNeGate/le_game">Here's Cuik's compiler-as-library used from Lua</a>
-		<video class="game-video" autoplay="" loop="" muted="" playsinline="">
-			<source src="lua.mp4" type="video/mp4">
-		</video>
-		<p>and capable of parsing GLSL</p>
-		<img src="cuik_glsl.png" class="thumbnail" alt="Cuik parsing GLSL">
-    </div>
-    </section>
-
-    <section id="tb">
-    <div class="container">
-        <div class="section-header">
-			<img src="tb_icon.png" alt="TB">
-            <h1>TinyBackend</h1>
-        </div>
-
-        <div class="sub-header">
-			<h4>TB </h4>
-			<ul>
-				<li> Sea of nodes IR (like V8 and JVM Hotspot) </li>
-				<li> Language-agnostic library </li>
-				<li> pure C11 code </li>
-				<li> parallel by design </li>
-			</ul>
-
-			<a href="https://github.com/RealNeGate/Cuik/tree/monorepo/tb" class="sub-link">TB repo</a>
-		</div>
-
-		<p>Tinybackend (TB) is a custom backend made to combat issues with other popular
-		backend options (LLVM, libgccjit). We focus on being both simple and very capable,
-		the design allows for trivial parallel compilation and integrated linking.</p>
-		<p>TB uses sea-of-nodes which is an IR style similar to SSA (immutable values representing
-		data flow) but instead of representing control flow via a separate graph where instructions/values
-		are placed, certain nodes propagate control flow and it acts as any other form of data would. This
-		way we abstract away a lot of scheduling details from the IR and leave clearer room for the code
-		generator. A simple example is that sea of nodes doesn't require the IR to perform loop invariant code
-		motion (moving operations outside of a loop if they don't change per iteration) because values simply
-		"would not" exist in the loop. The point of type systems and IRs is to expose logical truths which
-		we can optimize around or share with users and this style is in my opinion most suited for TB.
-		<img src="tb.png" class="thumbnail" alt="TB IR in graphviz">
-		<p>The red edges represent control flow, nodes which imply ordering will depend on whatever must happen
-		before them in a more intuitive style than basic blocks where certain operations don't have a strict ordering.</p>
-    </div>
-    </section>
-
-    <section id="game">
-    <div class="container">
-        <div class="section-header">
-			<img src="game_icon.png" alt="game">
-            <h1>Unnamed game project</h1>
-        </div>
-
-        <div class="sub-header">
-			<h4>Unnamed game project</h4>
-			<ul>
-				<li> animations </li>
-				<li> path finding </li>
-				<li> variance shadow mapping (with cascades) </li>
-			</ul>
-		</div>
-
-		<p>This was a game project I was making using C and GL 4.5. I've worked on a
-		vulkan port of the engine which supports dynamic switching which is WIP.
-		To briefly go over the shadow rendering techniques, Cascaded shadow maps handle
-		multiple distances of shadow and blend between them. Usually shadow mapping is
-		done via the depth buffer but to improve the quality of shadows i use a technique
-		called variance shadow mapping where we also store the depth squared, the reason why
-		is because when we perform either linear blending or blurring to the shadow map
-		the edges get softer rather than cutting off at different locations.</p>
-
-		<video class="game-video" autoplay="" loop="" muted="" playsinline="">
-			<source src="game.mp4" type="video/mp4">
-		</video>
-
-		<p>Here's a set of development shots</p>
-		<div class="snow-pictures">
-			<img src="game1.png" class="thumbnail">
-			<img src="game2.png" class="thumbnail">
-			<img src="game3.png" class="thumbnail">
-			<img src="game4.png" class="thumbnail">
-		</div>
-
-		<p>You can see in the bottom-right shot that i'm playing with sword slash SFX, this is doing
-		a relatively old style of rendering where I simply trace out the path dynamically and draw a
-		gradient, the same technique was done in Ocarina of time and Majora's mask which might seem
-		dated but given the right artstyle it's an effective solution over manually drawn slashing
-		sprites</p>
-    </div>
-    </section>
-
-	<section>
-		<div class="hire-card">
-			<img src="mug2.png"></img>
-			<div class="text-column">
-				<h1>Hire Me!</h1>
-				<p>If you think my projects are interesting, I may be a good fit for your company.</p>
-				<a id="emaila2"></a>
-			</div>
-		</div>
-	</section>
-
-	</body>
-	<footer></footer>
+    </body>
 </html>
