@@ -38,9 +38,9 @@ addEventListener('scroll', (event) => {
 <h1>Tilde, my LLVM alternative</h1>
 <p>
 I'm Yasser and I've made it my mission to produce an alternative to LLVM, the current
-king of compiler backend libraries. The reasons are pretty simple, i believe it's far too slow
-at compiling and far too big to be fixed from the inside, it's been 20 years and cruft has built
-up, time for a "redo".
+king of compiler backend libraries. I'm calling it Tilde (or TB for tilde backend) and the reasons
+are pretty simple, i believe it's far too slow at compiling and far too big to be fixed from the
+inside. It's been 20 years and cruft has built up, time for a "redo".
 </p>
 
 <p>
@@ -65,7 +65,7 @@ possible? :)
 
 <h2>Key features</h2>
 <ul>
-<li>Sea of nodes IR (opposed to the LLVM or GCC's "SSA CFG")</li>
+<li>Sea of nodes IR (opposed to the LLVM or GCC's SSA CFG)</li>
 <li>Simple type system</li>
 <li>Fast compile times</li>
 <li>Thread-safe modules (can generate and compile two functions at the same time)</li>
@@ -75,8 +75,8 @@ possible? :)
 
 <h2>In progress</h2>
 <p>
-Currently I'm working with GingerBill on integrating with<a href="https://github.com/odin-lang/Odin">Odin</a>along
-with Shaw Summa on<a href="https://github.com/FastVM/minivm/tree/cuik2">minivm</a>, I'm hoping to self host Cuik this year which will be the most capable example of
+Currently I'm working with GingerBill on integrating with <a href="https://github.com/odin-lang/Odin">Odin</a> along
+with Shaw Summa on <a href="https://github.com/FastVM/minivm/tree/cuik2">minivm</a>, I'm hoping to self host Cuik this year which will be the most capable example of
 TB. Along with this, the optimizer is in progress and going good with most of the expected optimizations:
 SSA construction, SCCP, folding, GVN, DCE, and code motion, along with a decent linear scan allocator
 which will eventually be replaced with graph coloring for optimized builds.
@@ -85,6 +85,20 @@ which will eventually be replaced with graph coloring for optimized builds.
 <h2>Roadmap</h2>
 <p>
 The current plan is to have Cuik self-hosting on windows by March 2024, this would mark the first capable compiler under TB. From there the next few months will be spent on self-hosting with the optimizer on, this currently has no timeline but once self hosting is complete i'll have a clearer picture of that milestone.
+</p>
+
+<h2>Compile times?</h2>
+<p>
+I made a small demo you can try running on different files, just compile <a href="https://gist.github.com/RealNeGate/0c367a16d89d281b5c590072d1a1298a">this</a>. Cuik traces need to be opened with <a href="https://gravitymoth.com/spall/spall.html">spall</a>
+</p>
+<h3>cuik -g -O1 -c -T</h3>
+<img src="spall_tb_o1.png"/>
+<h3>clang -g -O0 -c -ftime-trace</h3>
+<img src="spall_clang_o0.png"/>
+<p>
+This is with my optimizer on just in case someone wanted to argue that my codegen being dumb in unoptimized builds (which it isn't, it's about the same) was the cause.
+Other important caveats are that LLVM doesn't consider IR generation to be backend here so that's included in my example and not theirs, it's only 0.3ms for me so i didn't
+mind giving them the upper hand. It's not a fair test on purpose to show what my slowest looks like compared to their fastest.
 </p>
 
 <h2>Let's talk</h2>

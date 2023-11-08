@@ -15,6 +15,18 @@
     max-width:650px;
 }
 
+a {
+    padding: 0;
+    line-height: 1.6;
+    font-size: 1em;
+    text-decoration: underline;
+}
+
+img {
+    text-align: center;
+    width: 100%;
+}
+
 h1 { font-size: 2em; line-height:2.0; }
 h2 { font-size: 1.6em; line-height:1.2; }
 h3 { font-size: 1.2em; line-height:1.2; }
